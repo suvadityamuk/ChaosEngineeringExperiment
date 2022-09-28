@@ -1,0 +1,19 @@
+kind: NetworkChaos
+apiVersion: chaos-mesh.org/v1alpha1
+metadata:
+  namespace: default
+  name: exp2
+spec:
+  selector:
+    namespaces:
+      - default
+    labelSelectors:
+      app: chaos
+  mode: all
+  action: delay
+  duration: 30s
+  delay:
+    latency: 500ms
+    correlation: '0.95'
+    jitter: 25ms
+  direction: to
